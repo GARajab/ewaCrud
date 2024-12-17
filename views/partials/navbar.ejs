@@ -1,0 +1,52 @@
+<nav>
+  <div class="container">
+    <div class="navbar">
+      <h1 id="nav-header">Phone Unlock</h1>
+      <div class="nav-links">
+        <% if (user && user.cpr == "Admin") { %>
+
+        <a
+          href="/auth/sign-out"
+          class="btn btn-danger"
+          onclick="clearLoginNotification()"
+          >Sign Out</a
+        >
+        <a
+          href="/services/dashBoard"
+          class="btn btn-danger"
+          onclick="clearLoginNotification()"
+          >Home</a
+        >
+        <a
+          href="/schemes"
+          class="btn btn-danger"
+          onclick="clearLoginNotification()"
+          >All Schemes</a
+        >
+        <% } else if (user) { %>
+        <a
+          href="/auth/sign-out"
+          class="btn btn-primary"
+          onclick="clearLoginNotification()"
+          >Sign Out</a
+        >
+        <a
+          href="/schemes/dashBoard"
+          class="btn btn-primary"
+          onclick="clearLoginNotification()"
+          >Home</a
+        >
+        <a
+          href="/schemes/otherUsers/<%= user._id %>"
+          class="btn btn-primary"
+          onclick="clearLoginNotification()"
+          >My Services</a
+        >
+        <% } else { %>
+        <a href="/auth/sign-in" class="btn btn-primary">Sign In</a>
+        <a href="/auth/sign-up" class="btn btn-primary">Sign Up</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

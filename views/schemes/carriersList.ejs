@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Carriers List</title>
+  <%- include('../partials/header.ejs') %>
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    <div class="container row justify-content-center mx-auto text-center">
+      <h1>Select Your Service</h1>
+      <form
+        action="/addService"
+        method="POST"
+        name="purchseService"
+        class="form-group w-50 mx-auto"
+        style="margin-top: 30px"
+      >
+        <select
+          id="nameOfService"
+          name="nameOfServiceID"
+          class="form-select text-center"
+          aria-label="Default select example"
+          required
+        >
+          <option selected>Select The Service</option>
+          <% services.forEach((service) => { %>
+          <option value="<%= service._id %>" data-price="<%= service.price %>">
+            <%= service.nameOfService %>
+          </option>
+          <% }) %>
+        </select>
+
+        <label
+          for="price"
+          class="form-label"
+          style="font-size: 30px; margin-top: 30px"
+          >Price</label
+        >
+        <input
+          type="text"
+          id="price"
+          name="price"
+          class="form-control text-center"
+          required
+          readonly
+        />
+
+        <label
+          for="IMEI"
+          class="form-label"
+          style="font-size: 30px; margin-top: 30px"
+          >Enter Your iPhone IMEI</label
+        >
+
+        <div class="row mb-3">
+          <div class="col-10">
+            <input
+              id="IMEI14"
+              name="IMEI14"
+              type="text"
+              class="form-control text-center"
+              placeholder="First 14 digit of the IMEI"
+              oninput="calculateCheckDigit()"
+              maxlength="14"
+              required
+            />
+          </div>
+          <div class="col-2">
+            <input
+              id="IMEIlast"
+              name="IMEIlast"
+              type="text"
+              class="form-control text-center"
+            />
+          </div>
+        </div>
+        <input
+          type="text"
+          id="IMEI"
+          name="IMEI"
+          class="form-control text-center"
+          hidden
+        />
+        <input
+          type="text"
+          id="orderStatus"
+          name="orderStatus"
+          class="form-control text-center"
+          hidden
+        />
+        <button
+          class="btn btn-success w-100"
+          style="font-size: 30px; margin-top: 30px"
+        >
+          Order
+        </button>
+      </form>
+    </div>
+
+    <script>
+      // const farst14Digit = document.getElementById("IMEI14")
+      // const lastDigit = document.getElementById("Imeilast")
+      const select = document.getElementById("nameOfService")
+      const priceInput = document.getElementById("price")
+      select.addEventListener("change", () => {
+        const selectedOption = select.options[select.selectedIndex]
+        priceInput.value = selectedOption.getAttribute("data-price")
+      })
+
+      getValueFirst14Digit.addEventListener("input", calculateCheckDigit)
+
+      function calculateCheckDigit() {
+        // Get the current value of the first 14-digit input
+        const IMEI14 = document.getElementById("IMEI14").value
+        const IMEI = document.getElementById("IMEI").value
+        const IMEIlast = document.getElementById("IMEIlast").value
+
+        // Check if the input is valid
+
+        let sum = 0
+        let isOdd = true
+
+        // Loop through the digits from right to left
+        for (let i = IMEI14.length - 1; i >= 0; i--) {
+          let digit = parseInt(IMEI14.charAt(i), 10)
+
+          // If the position is odd (0-based from the right), double the digit
+          if (isOdd) {
+            digit *= 2
+
+            // If doubling results in a number greater than 9, subtract 9
+            if (digit > 9) digit -= 9
+          }
+
+          // Add to sum
+          sum += digit
+          isOdd = !isOdd // Toggle the odd/even flag
+        }
+
+        // The checksum is the number that needs to be added to make the sum a multiple of 10
+        const checksum = (10 - (sum % 10)) % 10
+
+        document.getElementById("orderStatus").value = "pending"
+        // Display the full IMEI and the checksum separately
+        // document.getElementById("fullIMEI").value = imei14 + checksum
+        document.getElementById("IMEIlast").value = checksum
+        document.getElementById("IMEI").value =
+          document.getElementById("IMEI14").value +
+          document.getElementById("IMEIlast").value
+
+        if (IMEI14.length == 14) {
+          document.getElementById("IMEIlast").style.backgroundColor = "#A1EEBD"
+          // document.getElementById("orderStatus").value = "pending"
+        } else {
+          document.getElementById("IMEIlast").style.backgroundColor = "White"
+        }
+      }
+    </script>
+  </body>
+</html>

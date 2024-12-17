@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+ <title>Add New</title>
+<%- include('../partials/header.ejs') %>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <div class="container" style="margin-top: -80px;">
+
+    <h1 style="text-align: center"></h1>
+
+    <h1 style="display: flex; justify-content: center; margin-top: 150px;">Add New Service</h1>
+
+    <div class="row">
+      <div class="col-md-5 mx-auto">
+        <div id="first">
+
+          <form action="/services" method="POST" name="addNewService">
+            <!-- this is the localhost:3000 path without any thing will transfer you to the form action -->
+            <br>
+            <br>
+            <div class="form-group">
+              <label for="nameOfService">Name</label>
+              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
+                placeholder="Enter Your New Service Name">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input type="text" name="price" class="form-control" id="price"
+                placeholder="Enter The Price">
+            </div>
+            <br>
+            <div class="col-md-14 text-center">
+              <button type="submit" style="font-size: 25px;" class=" btn btn-block mybtn btn-primary tx-tfm">Add</button>
+            </div>
+
+            
+        </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</body>
+
+</html>
