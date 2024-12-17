@@ -23,6 +23,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^8.8.0",
     "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
     "toastify-js": "^1.12.0"
   }
 }
