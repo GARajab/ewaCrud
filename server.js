@@ -23,6 +23,9 @@ const connectDB = async () => {
   }
 }
 connectDB()
+app.use(express.urlencoded({ extended: false }))
+app.use(methodOverRide("_method"))
+app.use(morgan("dev"))
 app.use(
   session({
     secret: process.env.SESSION_SECRET,

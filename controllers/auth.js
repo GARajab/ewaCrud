@@ -56,7 +56,7 @@ const signin_post = async (req, res) => {
     }
     res.locals.messages = `Welcome Back ${req.session.user.cpr}`
     res.render("schemes/dashBoard", {
-      cpr: req.session.user,
+      user: req.session.user,
       messages: res.locals.messages,
     })
     console.log("User in Database:", userInDatabase)
