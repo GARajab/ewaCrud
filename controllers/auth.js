@@ -26,9 +26,7 @@ const signup_post = async (req, res) => {
     res.redirect("/auth/sign-in")
   } catch (err) {
     console.log(err)
-    return res.send(
-      "Failed To Create User. Please Try Again Or Call The Admin On 17991236."
-    )
+    return res.send("Failed To Create User.")
   }
 }
 
@@ -78,3 +76,33 @@ export default {
   signup_get,
   router,
 }
+
+// ********** this code we can use it to update or reset the password ************
+// const signin_post = async (req, res) => {
+//   try {
+//     const userInDatabase = await User.findOne({ cpr: req.body.cpr })
+//     if (!userInDatabase) {
+//       return res.redirect("/auth/sign-in")
+//     }
+//     const validPassword = compareSync(
+//       req.body.password,
+//       userInDatabase.password
+//     )
+//     if (!validPassword) {
+//       return res.send("Login Failed. Please try again.")
+//     }
+//     req.session.user = {
+//       cpr: userInDatabase.cpr,
+//       _id: userInDatabase._id,
+//       email: userInDatabase.email,
+//     }
+//     res.locals.messages = `Welcome Back ${req.session.user.cpr}`
+//     res.render("schemes/dashBoard", {
+//       user: req.session.user,
+//       messages: res.locals.messages,
+//     })
+//   } catch (err) {
+//     console.log(err)
+//     res.redirect("/auth/sign-in")
+//   }
+// }
