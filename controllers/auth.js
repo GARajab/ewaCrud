@@ -59,9 +59,6 @@ const signin_post = async (req, res) => {
       user: req.session.user,
       messages: res.locals.messages,
     })
-    console.log("User in Database:", userInDatabase)
-    console.log("Valid Password:", validPassword)
-    console.log("Session User Before Assignment:", req.session.user)
   } catch (err) {
     console.log(err)
     res.redirect("/auth/sign-in")
