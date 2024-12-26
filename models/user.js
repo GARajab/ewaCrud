@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
   cpr: {
     type: String,
     required: true,
-    required:true
+    maxlength: [9],
   },
   password: { type: String, required: true },
   email: { type: String, required: true },

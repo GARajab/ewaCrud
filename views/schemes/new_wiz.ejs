@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Add New</title>
+  <%- include('../partials/header_wiz.ejs') %>
+
+  <body>
+    <!-- Trigger button to open the first modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#step1"
+    >
+      Start Wizard
+    </button>
+
+    <!-- Step 1 Modal -->
+    <div
+      class="modal fade"
+      id="step1"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="step1Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="step1Label">Step 1</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Step 1 Content -->
+            <p>This is the content of step 1.</p>
+            <form action="/services" method="POST" name="addNewService">
+              <div class="form-col">
+                <div class="form-group">
+                  <label for="Sch Ref">Scheme Reference</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Sch Ref"
+                    placeholder="Scheme Reference"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Job no">Job Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Job no"
+                    placeholder="Job Number"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="input4">APPNUMBER</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="APPNUMBER"
+                    placeholder="APPNUMBER"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="BLK"></label>
+                  <input
+                    type=""
+                    class="form-control"
+                    id="BLK"
+                    placeholder="BLK"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="showNextModal('step1', 'step2')"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 Modal -->
+    <div
+      class="modal fade"
+      id="step2"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="step2Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="step2Label">Step 2</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Step 2 Content -->
+            <p>This is the content of step 2.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="showNextModal('step2', 'step3')"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 Modal -->
+    <div
+      class="modal fade"
+      id="step3"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="step3Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="step3Label">Step 3</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Step 3 Content -->
+            <p>This is the content of step 3.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="completeWizard()"
+            >
+              Finish
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function showNextModal(currentModalId, nextModalId) {
+        // Hide the current modal
+        $(`#${currentModalId}`).modal("hide")
+        // Show the next modal
+        $(`#${nextModalId}`).modal("show")
+      }
+
+      function completeWizard() {
+        alert("Wizard completed!")
+        // Close the last modal
+        $("#step3").modal("hide")
+      }
+    </script>
+  </body>
+</html>
