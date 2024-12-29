@@ -11,7 +11,7 @@ const index = async (req, res) => {
 }
 
 const newScheme = async (req, res) => {
-  res.render("schemes/new_wiz.ejs")
+  res.render("schemes/new.ejs")
 }
 
 const createScheme = async (req, res) => {

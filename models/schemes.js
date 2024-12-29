@@ -1,5 +1,4 @@
 import { mongoose, model, Schema } from "mongoose"
-import uniqueValidator from "mongoose-unique-validator"
 
 const schemeSchema = new mongoose.Schema({
   "Sch Ref": { type: String, require: true, unique: true },
@@ -19,8 +18,6 @@ const schemeSchema = new mongoose.Schema({
   AREA: { type: String, require: true },
   TYPE: { type: String, require: true },
 })
-
-schemeSchema.plugin(uniqueValidator)
 
 const Scheme = mongoose.model("Scheme", schemeSchema)
 export default Scheme
