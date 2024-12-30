@@ -34,15 +34,13 @@ const signup_post = async (req, res) => {
     req.session.messages = `Thank You ${req.body.cpr} Now You Can Sign In`
     res.redirect("/auth/sign-in")
   } catch (err) {
-<<<<<<< HEAD
     console.log(err)
     return res.send("Failed To Create User.")
-=======
+
     // console.log(err)
     req.session.messages =
       "Failed To Create User. Please Try Again Or Call The Admin On 17991236."
     return res.redirect("/auth/sign-up")
->>>>>>> d0f5222f09a2b2aa9bf3ee6294deb3296cde0cd5
   }
 }
 

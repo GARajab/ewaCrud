@@ -55,7 +55,7 @@
   <nav>
     <div class="container">
       <div class="navbar">
-        <h1 id="nav-header">Phone Unlock</h1>
+        <h1 id="nav-header">EWA "Rajab"</h1>
         <div class="nav-links">
        
   <a
@@ -71,7 +71,7 @@
             >Home</a
           >
           <a
-            href="/schemes/otherUsers/<%= user._id %>"
+            href="/schemes/otherUsers/"
             class="btn btn-primary"
             onclick="clearLoginNotification()"
             >My Schemes</a
@@ -89,115 +89,115 @@
 
     <h1 style="text-align: center"></h1>
 
-    <h1 style="display: flex; justify-content: center; margin-top: 150px;">Add New Service</h1>
+    <h1 style="display: flex; justify-content: center; margin-top: 150px;">Add New Scheme</h1>
 
     <div class="row">
       <div class="col-md-5 mx-auto">
         <div id="first">
 
-          <form action="/services" method="POST" name="addNewService">
+          <form action="/services" method="POST" name="addNewService" needs-validation >
             <!-- this is the localhost:3000 path without any thing will transfer you to the form action -->
     
             <br>
-            <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+            <div>
+              <label for="Sch Ref">Reference Number</label>
+              <input type="text" name="Sch Ref" class="form-control" id="Sch Ref"
+                placeholder="Enter Your New Reference Number">
             </div>
             <br>
             <div class="form-group">
-              <label for="price">Price</label>
-              <input type="text" name="price" class="form-control" id="price"
-                placeholder="Enter The Price">
+              <label for="APPNUMBER">Application Number</label>
+              <input type="text" name="APPNUMBER" class="form-control" id="APPNUMBER"
+                placeholder="Enter The Application Number">
             </div>
            
        
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="BLK">Block</label>
+              <input type="text" name="BLK" class="form-control" id="BLK" 
+                placeholder="Enter Block Number">
             </div>
      
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="SUPERVISOR">SUPER VISOR</label>
+              <input type="text" name="SUPERVISOR" class="form-control" id="SUPERVISOR" 
+                placeholder="Enter The SUPER VISOR">
             </div>
    
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="Contractor Name">Contractor Name</label>
+              <input type="text" name="Contractor Name" class="form-control" id="Contractor Name" 
+                placeholder="Enter The Contractor Name">
             </div>
      
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="Title1">Title</label>
+              <input type="text" name="Title1" class="form-control" id="Title1" 
+                placeholder="Enter The Title">
             </div>
   
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="STATUS">STATUS</label>
+              <input type="text" name="STATUS" class="form-control" id="STATUS" 
+                placeholder="Enter The Status">
             </div>
    
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="PERCENTAGE">PERCENTAGE</label>
+              <input type="text" name="PERCENTAGE" class="form-control" id="PERCENTAGE" 
+                placeholder="Enter The PERCENTAGE">
             </div>
   
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
+              <label for="nameOfService">DATE OF COMPLETE</label>
               <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+                placeholder="Enter The DATE OF COMPLETE">
   
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="NUMBEROFSS">NUMBER OF Substations</label>
+              <input type="text" name="NUMBEROFSS" class="form-control" id="NUMBEROFSS" 
+                placeholder="Enter The Number Of Substations">
             </div>
        
           
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="APPSTATUS">APP STATUS</label>
+              <input type="text" name="APPSTATUS" class="form-control" id="APPSTATUS" 
+                placeholder="Enter The App Status">
             </div>
         
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="DATEOFMEASUREMENT">DATE OF MEASUREMENT</label>
+              <input type="text" name="DATEOFMEASUREMENT" class="form-control" id="DATEOFMEASUREMENT" 
+                placeholder="Enter The Date Of Measurment">
             </div>
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="CONTRACTORAPPRAISAL">CONTRACTOR APPRAISAL</label>
+              <input type="text" name="CONTRACTORAPPRAISAL" class="form-control" id="CONTRACTORAPPRAISAL" 
+                placeholder="Enter The Contractor Appraisal">
             </div>
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="AREA">AREA</label>
+              <input type="text" name="AREA" class="form-control" id="AREA" 
+                placeholder="Enter The Area">
             </div>
             <br>
             <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
+              <label for="TYPE">TYPE</label>
+              <input type="text" name="TYPE" class="form-control" id="TYPE" 
+                placeholder="Enter The Type">
             </div>
 
             <br>
