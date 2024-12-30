@@ -82,5 +82,21 @@
         </div>
       </div>
     </div>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <!-- Toast Notification -->
+    <script>
+      Toastify({
+        text: "<%= messages %>",
+        className: "danger",
+        duration: 5000,
+        style: {
+          background: "#D21F1FFF",
+          color: "white",
+        },
+      }).showToast()
+    </script>
   </body>
 </html>

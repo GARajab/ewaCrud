@@ -1,49 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
- <title>Add New</title>
+<title>Add New</title>
 <%- include('../partials/header.ejs') %>
-<body>
-    <%- include('../partials/navbar.ejs') %>
+
+  <body>
+
     <div class="container" style="margin-top: -80px;">
 
-    <h1 style="text-align: center"></h1>
+      <h1 style="text-align: center"></h1>
 
-    <h1 style="display: flex; justify-content: center; margin-top: 150px;">Add New Service</h1>
-
-    <div class="row">
-      <div class="col-md-5 mx-auto">
-        <div id="first">
-
-          <form action="/services" method="POST" name="addNewService">
-            <!-- this is the localhost:3000 path without any thing will transfer you to the form action -->
-            <br>
-            <br>
-            <div class="form-group">
-              <label for="nameOfService">Name</label>
-              <input type="text" name="nameOfService" class="form-control" id="nameOfService" 
-                placeholder="Enter Your New Service Name">
-            </div>
-            <br>
-            <div class="form-group">
-              <label for="price">Price</label>
-              <input type="text" name="price" class="form-control" id="price"
-                placeholder="Enter The Price">
-            </div>
-            <br>
-            <div class="col-md-14 text-center">
-              <button type="submit" style="font-size: 25px;" class=" btn btn-block mybtn btn-primary tx-tfm">Add</button>
-            </div>
-
-            
+      <h1 style="display: flex; justify-content: center; margin-top: 150px;">Add New Scheme</h1>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div id="first">
+            <form action="/services" method="POST" name="addNewService">
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="Sch Ref">Scheme Reference</label>
+                    <input type="text" class="form-control" id="Sch Ref" placeholder="Scheme Reference">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="Job no">Job Number</label>
+                    <input type="text" class="form-control" id="Job no" placeholder="Job Number">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="input4">APPNUMBER</label>
+                    <input type="text" class="form-control" id="APPNUMBER" placeholder="APPNUMBER">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="BLK"></label>
+                    <input type="" class="form-control" id="BLK" placeholder="BLK">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control">
+                      <option selected>Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="SUPERVISOR">SUPERVISOR</label>
+                    <input type="" class="form-control" id="SUPERVISOR" placeholder="SUPERVISOR">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="Contractor Name"></label>
+                    <input type="text" class="form-control" id="Contractor Name" placeholder="Contractor Name">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="Title1">Title1</label>
+                    <input type="" class="form-control" id="Title1" placeholder="Title1">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="input4"></label>
+                    <input type="" class="form-control" id="input4" placeholder="">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="input4"></label>
+                    <input type="" class="form-control" id="input4" placeholder="">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="input4"></label>
+                    <input type="" class="form-control" id="input4" placeholder="">
+                  </div>
+                </div>
+                <d class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="input4"></label>
+                    <input type="" class="form-control" id="input4" placeholder="">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="input4"></label>
+                    <input type="" class="form-control" id="input4" placeholder="">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="input4"></label>
+                    <input type="" class="form-control" id="input4" placeholder="">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
         </div>
-        </form>
-
       </div>
     </div>
-  </div>
-  </div>
-  </div>
-  </div>
-</body>
-
+    </div>
+    </div>
+  </body>
 </html>

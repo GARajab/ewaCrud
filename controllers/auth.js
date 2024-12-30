@@ -7,16 +7,25 @@ import User from "../models/user.js"
 const router = Router()
 
 const signup_get = (req, res) => {
-  res.render("auth/sign-up")
+  // Extract messages from the session if they exist
+  const messages = req.session.messages || ""
+  // Clear messages from the session to avoid showing them again
+  req.session.messages = null
+
+  // Render the signup page and pass the messages to the EJS template
+  res.render("auth/sign-up", { messages })
 }
 
 const signup_post = async (req, res) => {
   const userInDatabase = await User.findOne({ cpr: req.body.cpr })
   if (userInDatabase) {
-    return res.send("CPR already in database")
+    // return res.send("CPR already in database")
+    req.session.messages = `User Already In Database`
+    return res.redirect("/auth/sign-up")
   }
   if (req.body.password !== req.body.confirmPassword) {
-    return res.send("Passwords do not match")
+    req.session.messages = "Passwords Do No Matching."
+    return res.redirect("/auth/sign-up")
   }
   try {
     const hashedPassword = hashSync(req.body.password, 10)
@@ -25,8 +34,15 @@ const signup_post = async (req, res) => {
     req.session.messages = `Thank You ${req.body.cpr} Now You Can Sign In`
     res.redirect("/auth/sign-in")
   } catch (err) {
+<<<<<<< HEAD
     console.log(err)
     return res.send("Failed To Create User.")
+=======
+    // console.log(err)
+    req.session.messages =
+      "Failed To Create User. Please Try Again Or Call The Admin On 17991236."
+    return res.redirect("/auth/sign-up")
+>>>>>>> d0f5222f09a2b2aa9bf3ee6294deb3296cde0cd5
   }
 }
 
@@ -53,7 +69,7 @@ const signin_post = async (req, res) => {
       email: userInDatabase.email,
     }
     res.locals.messages = `Welcome Back ${req.session.user.cpr}`
-    res.render("schemes/dashBoard", {
+    return res.render("schemes/dashBoard", {
       user: req.session.user,
       messages: res.locals.messages,
     })
