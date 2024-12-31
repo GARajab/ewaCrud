@@ -24,7 +24,8 @@ const connectDB = async () => {
   }
 }
 connectDB()
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverRide("_method"))
 app.use(morgan("dev"))
 app.use(
@@ -37,7 +38,7 @@ app.use(
 // Call the connect function to establish the connection
 
 app.use("/auth", authRouter)
-app.use("/schemes", schemeRouter)
+app.use("/", schemeRouter)
 app.use(urlencoded({ extended: false }))
 app.use(methodOverRide("_method"))
 app.use(morgan("dev"))

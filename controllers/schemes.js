@@ -1,8 +1,7 @@
-import User from "../models/user.js"
 import Scheme from "../models/schemes.js"
 const index = async (req, res) => {
   try {
-    const populatedSchemes = await User.find()
+    const populatedSchemes = await Scheme.find()
     res.render("schemes/new.ejs")
   } catch (err) {
     console.log(err)
@@ -14,28 +13,20 @@ const newScheme = async (req, res) => {
   res.render("schemes/new.ejs")
 }
 
-const createScheme = async (req, res) => {
+const createSchemeFunc = async (req, res) => {
   // Check if user is authenticated
-  if (!req.session.scheme) {
+  if (!req.session.user) {
     return res.send("Unauthorized: Please log in.")
   }
-
-  req.body.userSchemeSelected = req.session.scheme._id
-
   try {
-    const addnewScheme = new Scheme({
-      schemeRefrence: req.body.schemeRefrence,
-      block: req.body.block, // Adding the reference to the User
+    const createScheme = await Scheme.create(req.body)
+    const allSchemes = await Scheme.find()
+    res.render("schemes/allSchemes.ejs", {
+      createSchemes: allSchemes,
     })
-    await Scheme.create(req.body)
-    if (req.session.user.cpr === "Admin") {
-      res.redirect("/schemes")
-    } else {
-      // Ensure `Recipe` model is imported correctly
-      res.redirect(`/schemes/otherUsers?userId=${req.session.scheme._id}`)
-    }
   } catch (error) {
-    res.status(500).send("Error creating Scheme.")
+    console.log(error)
+    res.send(error)
   }
 }
 
@@ -89,7 +80,7 @@ const getById = async (req, res) => {
   }
 }
 
-const showSchemes = async (req, res) => {
+const dashBoard = async (req, res) => {
   try {
     const populatedSchemes = await Scheme.find({}).populate(
       "userSchemeSelected"
@@ -115,18 +106,10 @@ const showSchemesList = async (req, res) => {
     res.redirect("/")
   }
 }
-const allSchemesServices = async (req, res) => {
+const allSchemesFunc = async (req, res) => {
   try {
-    const userId = req.params.userID
-
-    if (!userId) {
-      return res.status(400).send("User ID is required.")
-    }
-
-    const allSchemesServicess = await Services.find({
-      allShemesServices: userId,
-    }).populate("allSchemesServicess")
-    res.render("schemes/allServices", { services: allSchemesServicess })
+    const allSchemesConst = await Scheme.find()
+    res.render("schemes/allSchemes", { createScheme: allSchemesConst })
   } catch (err) {
     console.log(err)
     res.redirect("/")
@@ -135,13 +118,13 @@ const allSchemesServices = async (req, res) => {
 
 export default {
   showSchemesList,
-  showSchemes,
-  allSchemesServices,
+  dashBoard,
+  allSchemesFunc,
   getById,
   deleteScheme,
   updateScheme,
   editScheme,
-  createScheme,
+  createSchemeFunc,
   index,
   newScheme,
 }
