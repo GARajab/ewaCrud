@@ -1,8 +1,26 @@
 import Scheme from "../models/schemes.js"
+
 const index = async (req, res) => {
+  const currentPage = parseInt(req.query.page) || 1 // Get page number from query, default to 1
+  const itemsPerPage = 30
   try {
+    const totalItems = await Scheme.countDocuments() // Get total number of records
+    const totalPages = Math.ceil(totalItems / itemsPerPage) // Calculate total pages
     const populatedSchemes = await Scheme.find()
-    res.render("schemes/allSchemes.ejs", { createSchemes: populatedSchemes })
+      .skip((currentPage - 1) * itemsPerPage) // Skip previous pages' records
+      .limit(itemsPerPage) // Limit to itemsPerPage
+    // Calculate pagination limits
+    const paginateLimit = 10 // Max number of page links to display
+    const startPage = Math.max(1, currentPage - Math.floor(paginateLimit / 2)) // Starting page
+    const endPage = Math.min(totalPages, startPage + paginateLimit - 1) // Ending page
+
+    res.render("schemes/allSchemes", {
+      populatedSchemes,
+      currentPage,
+      totalPages,
+      startPage,
+      endPage,
+    })
   } catch (err) {
     console.log(err)
     res.redirect("/")
