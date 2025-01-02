@@ -12,7 +12,7 @@ router.get("/schemesList", isSignedIn, isAdmin, schemesRouter.showSchemesList)
 //   schemesRouter.allSchemesServices
 // )
 router.get("/dashBoard", isSignedIn, schemesRouter.dashBoard)
-router.get("/", isSignedIn, schemesRouter.index)
+router.get("/allSchemes", isSignedIn, schemesRouter.index)
 router.get("/new", isSignedIn, schemesRouter.newScheme)
 router.get("/:schemeId", isSignedIn, schemesRouter.getById)
 router.post("/create", isSignedIn, schemesRouter.createSchemeFunc)

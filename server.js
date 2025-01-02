@@ -38,7 +38,7 @@ app.use(
 // Call the connect function to establish the connection
 
 app.use("/auth", authRouter)
-app.use("/", schemeRouter)
+app.use("/schemes", schemeRouter)
 app.use(urlencoded({ extended: false }))
 app.use(methodOverRide("_method"))
 app.use(morgan("dev"))

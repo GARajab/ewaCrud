@@ -2,7 +2,7 @@ import Scheme from "../models/schemes.js"
 const index = async (req, res) => {
   try {
     const populatedSchemes = await Scheme.find()
-    res.render("schemes/new.ejs")
+    res.render("schemes/allSchemes.ejs", { createSchemes: populatedSchemes })
   } catch (err) {
     console.log(err)
     res.redirect("/")
@@ -21,7 +21,7 @@ const createSchemeFunc = async (req, res) => {
   try {
     const createScheme = await Scheme.create(req.body)
     const allSchemes = await Scheme.find()
-    res.render("schemes/allSchemes.ejs", {
+    res.redirect("/schemes", {
       createSchemes: allSchemes,
     })
   } catch (error) {
