@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-   <title>Dashboard</title>
-<%- include('../partials/header.ejs') %>
+  <head>
+    <title>Dashboard</title>
+    <%- include('../partials/header.ejs') %>
+    <link
+      rel="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="//code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+      body {
+        background-color: #eee;
+      }
+    </style>
+  </head>
   <body onload="pushNotify()">
-    <a
-          href="/auth/sign-out"
-          class="btn btn-primary"
-          onclick="clearLoginNotification()"
-          >Sign Out</a
-        >
-    <section style="background-color: #eee">
-       
-      <div class="container py-5">
+    <section class="py-5">
+      <div class="container">
         <div class="row">
           <div class="col">
             <nav
@@ -19,22 +26,19 @@
               class="bg-body-tertiary rounded-3 p-3 mb-4"
             >
               <ol class="breadcrumb mb-0">
-                <% if (user && user.cpr == "Admin") { %>
-                <li class="breadcrumb-item mx-auto fs-1" aria-current="page">
-                  Admin Dashboard
-                </li>
-                <% } else if (user) {%>
-                   <li class="breadcrumb-item mx-auto fs-1" aria-current="page">
+                <li
+                  class="breadcrumb-item mx-auto fs-1 active"
+                  aria-current="page"
+                >
                   <%= user.cpr %> Dashboard
                 </li>
-                 <% } %>
               </ol>
               <a
-          href="/auth/sign-out"
-          class="btn btn-danger"
-          onclick="clearLoginNotification()"
-          >Sign Out</a
-        >
+                href="/auth/sign-out"
+                class="btn btn-danger"
+                onclick="clearLoginNotification()"
+                >Sign Out</a
+              >
             </nav>
           </div>
         </div>
@@ -50,8 +54,6 @@
                   style="width: 150px"
                 />
                 <h5 class="my-3"><%= user.cpr %></h5>
-
-                
               </div>
             </div>
           </div>
@@ -77,29 +79,21 @@
                 </div>
               </div>
             </div>
-            <% if (user && user.cpr == "Admin") { %>
+
             <div class="row">
               <div class="col-md-4">
                 <div class="card mb-4 mb-md-0 text-center">
                   <div class="card-body">
                     <p class="mb-4">
-                      <span class="text-primary font-italic me-1"
-                        ><a href="/schemes/allSchemes" class="btn btn-primary"
+                      <span class="text-primary font-italic me-1">
+                        <a href="/schemes/allSchemes" class="btn btn-primary"
                           >All Schemes</a
-                        ></span
-                      >
-                      
-                      <a href="/schemes/usersList" class="btn btn-primary"
-                        >All Users</a
+                        >
+                      </span>
+                      <a href="/schemes/new" class="btn btn-primary"
+                        >New Scheme</a
                       >
                     </p>
-                    
-                     <% } else { %>
-                      <a href='/schemes/otherUsers/<%= user._id %>' class="btn btn-primary"
-                          >My Shemes</a
-                        ></span
-                      >
-                      <% } %>
                   </div>
                 </div>
               </div>
@@ -108,19 +102,24 @@
         </div>
       </div>
     </section>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <!-- Toast Notification -->
- <script>
-Toastify({
-  text: "<%= messages %>",
-  className: "success",
-  style: {
-    background: "#157347",
-    color:"white"
-  }
-}).showToast();
-
-
- </script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script>
+      const showMessage = "<%= messages %>"
+      if (showMessage) {
+        Toastify({
+          text: showMessage,
+          className: "success",
+          style: {
+            background: "#28a745", // Green color for success message
+            color: "white",
+          },
+        }).showToast()
+      }
+    </script>
   </body>
 </html>
