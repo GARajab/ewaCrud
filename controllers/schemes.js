@@ -88,13 +88,11 @@ const getById = async (req, res) => {
 
 const dashBoard = async (req, res) => {
   try {
-    const populatedSchemes = await Scheme.find({})
     res.render("schemes/dashBoard.ejs", {
-      services: populatedSchemes,
       messages: res.locals.messages,
     })
   } catch (err) {
-    console.error(err)
+    console.log(err)
     res.redirect("/")
   }
 }
