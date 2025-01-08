@@ -88,7 +88,7 @@ const getById = async (req, res) => {
 
 const dashBoard = async (req, res) => {
   try {
-    res.render("schemes/dashBoard.ejs", {
+    res.redirect("/schemes/dashBoard", {
       messages: res.locals.messages,
     })
   } catch (err) {
