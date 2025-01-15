@@ -82,6 +82,17 @@ const signout = (req, res) => {
   res.redirect("/auth/sign-in")
 }
 
+const signin = (req, res) => {
+  try {
+    res.render("auth/sign-in.ejs", {
+      messages: res.locals.messages,
+    })
+  } catch (err) {
+    console.log(err)
+    res.redirect("/")
+  }
+}
+
 export default {
   signout,
   signin_post,

@@ -15,7 +15,7 @@ const newScheme = (req, res) => {
 }
 
 const createSchemeFunc = async (req, res) => {
-  // Check if user is authenticated
+  // Check if user is authenticatedzz
   if (!req.session.user) {
     return res.send("Unauthorized: Please log in.")
   }

@@ -8,6 +8,7 @@
       href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <style>
@@ -36,32 +37,25 @@
       </div>
     </nav>
 
-    <h1 class="text-center">Services Table</h1>
+    <h1 class="text-center">Schemes Table</h1>
 
     <div class="container table-container">
-      <input
-        type="text"
-        id="searchInput"
-        class="form-control"
-        placeholder="Search for any value..."
-      />
-
-      <table class="table table-bordered table-hover text-center">
-        <thead class="thead-dark">
+      <table class="table table-bordered table-hover text-center" id="myTable">
+        <thead >
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Scheme Reference</th>
-            <th scope="col">Job Number</th>
-            <th scope="col">Block</th>
-            <th scope="col">Supervisor</th>
-            <th scope="col">Contractor Name</th>
-            <th scope="col">Title</th>
-            <th scope="col">Status</th>
-            <th scope="col">Percentage</th>
-            <th scope="col">Date of Completion</th>
-            <th scope="col">Application Status</th>
-            <th scope="col">Date of Measurement</th>
-            <th scope="col">Action</th>
+            <th>#</th>
+            <th>Scheme Reference</th>
+            <th>Job Number</th>
+            <th>Block</th>
+            <th>Supervisor</th>
+            <th>Contractor Name</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Percentage</th>
+            <th>Date of Completion</th>
+            <th>Application Status</th>
+            <th>Date of Measurement</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody id="servicesTableBody">
@@ -274,7 +268,7 @@
       </div>
     </div>
 
-    <script>
+    <!-- <script>
       $(document).ready(function () {
         var allRows = $("#servicesTableBody tr")
 
@@ -326,6 +320,37 @@
           )
         })
       })
+      
+    </script> -->
+   <script>
+     new DataTable('#myTable', {
+        initComplete: function () {
+          this.api()
+            .columns()
+            .every(function () {
+              let column = this;
+              let title = column.footer().textContent;
+
+              // Create input element
+              let input = document.createElement('input');
+              input.placeholder = title;
+              column.footer().replaceChildren(input);
+
+              // Event listener for user input
+              input.addEventListener('keyup', () => {
+                if (column.search() !== this.value) {
+                  column.search(input.value).draw();
+                }
+              });
+            });
+        }
+      });
+   </script>
+   <script>
+      $(document).ready(function () {
+          $('#myTable').DataTable();
+        });
     </script>
+    <script src="//cdn.datatables.net/2.2.1/js/dataTables.min.js"></script>
   </body>
 </html>
